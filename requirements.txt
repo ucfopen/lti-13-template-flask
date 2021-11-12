@@ -1,0 +1,12 @@
+boto3==1.9.99
+botocore==1.12.99
+Flask==1.1.2
+Flask-SQLAlchemy==2.5.1
+Flask-Caching==1.8.0
+Flask-DebugToolbar==0.11.0
+Flask-Migrate==3.1.0
+PyLTI1p3==1.8.4
+cryptography==3.2
+mysqlclient==2.0.3
+Werkzeug==1.0.1
+pycrypto

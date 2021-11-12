@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+  lti:
+    build:
+      context: .
+      args:
+        - "REQUIREMENTS=${REQUIREMENTS}"
+    volumes:
+      - ./lti:/app
+      - $PWD/devops/nginx.conf:/app/nginx.conf
+      - $PWD/devops/uwsgi.ini:/app/uwsgi.ini
+      - $PWD/generate_keys.py:/app/generate_keys.py
+    ports:
+      - "8000:80"
+    env_file:
+      - .env
+    environment:
+      - MODULE_NAME=app
+      - FLASK_APP=main.py

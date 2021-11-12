@@ -1,0 +1,15 @@
+{% extends "base.htm.j2" %}
+
+{% block content %}
+
+<div class="control-container">
+        <h2>Error Loading Tool</h2>
+</div>
+
+<p>An error occured loading this tool. Please reload the tool or try again later.</p>
+
+{% if error: %}
+<p class="error-description">{{ error }}</p>
+{% endif %}
+
+{% endblock %}
