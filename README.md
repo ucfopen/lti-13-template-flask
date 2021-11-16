@@ -34,7 +34,7 @@ After Docker builds and starts the services, you will run the migration commands
 
 
 ```sh
-docker-compose exec lti FLASK_APP=main flask db upgrade 
+docker-compose exec lti flask db upgrade 
 ```
 
 The database which will hold your LTI1.3 credentials is now created.  It's now time to generate the LTI 1.3 keys for LMS authentication:
@@ -47,6 +47,6 @@ Follow these instructions to install the LTI 1.3 Template into your CanvasLMS.
 
 You will then enter the LMS generated client id into the command above, then install the app into one of your courses and then add the deployment id from the Course Settings page.
 
-The LTI 1.3 Template will now be available at: <http://127.0.0.1:8000>
+The LTI 1.3 Template will now be available at: <http://127.0.0.1:8000/lti13template/>
 
 
