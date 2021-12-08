@@ -153,7 +153,10 @@ def login():
     oidc_login = FlaskOIDCLogin(
         flask_request, tool_conf, launch_data_storage=launch_data_storage
     )
-    return oidc_login.enable_check_cookies().redirect(target_link_uri)
+    return oidc_login.enable_check_cookies(
+        main_msg="Your browser prohibits saving cookies in an iframe.",
+        click_msg="Click here to open the application in a new tab.",
+    ).redirect(target_link_uri)
 
 
 # Main Launch URL
@@ -175,7 +178,7 @@ def launch():
     session["launch_id"] = message_launch.get_launch_id()
     session["error"] = False
 
-    return render_template("start.htm.j2", {"email": email})
+    return render_template("start.htm.j2", email=email)
 
 
 # Install JSON
