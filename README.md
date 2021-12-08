@@ -12,8 +12,8 @@ We are always looking for feedback and pull requests.
 First you will need to clone the repo, and create the environment file from the template.  
 
 ```sh
-git clone git@github.com:ucfopen/lti-simple.git
-cd lti-simple
+git clone https://github.com/ucfopen/lti-13-template-flask
+cd lti-13-template-flask
 cp .env.template .env
 
 ```
