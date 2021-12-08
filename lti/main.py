@@ -178,7 +178,7 @@ def launch():
     session["launch_id"] = message_launch.get_launch_id()
     session["error"] = False
 
-    return render_template("start.htm.j2", {"email": email})
+    return render_template("start.htm.j2", email=email)
 
 
 # Install JSON
