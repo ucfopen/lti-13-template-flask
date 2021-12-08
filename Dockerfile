@@ -4,6 +4,7 @@ RUN apt-get update && apt-get -y install libffi-dev gcc python3-dev libffi-dev l
 
 WORKDIR /app
 COPY requirements.txt /app/
+COPY test_requirements.txt /app/
 RUN echo $REQUIREMENTS
 RUN pip install -r $REQUIREMENTS
 COPY ./lti/ /app/
