@@ -136,11 +136,11 @@ def get_launch_data_storage():
 # LTI 1.3 Routes
 # ============================================
 
+# OIDC Login
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
     session['iss'] = request.values.get('iss')
     session['client_id'] = request.values.get('client_id')
-    session['url_root'] = request.url_root
 
     tool_conf = get_lti_config(session['iss'], session['client_id'])
 
@@ -158,7 +158,7 @@ def login():
         .enable_check_cookies()\
         .redirect(target_link_uri)
 
-
+# Main Launch URL
 @app.route('/launch/', methods=['POST'])
 def launch():
     tool_conf = get_lti_config(session['iss'], session['client_id'])
@@ -176,14 +176,9 @@ def launch():
     session['launch_id'] = message_launch.get_launch_id()
     session['error'] = False
 
-    tpl_kwargs = {
-        'launch_id': session['launch_id'],
-        'url_root': session['url_root'],
-        'email': email
-    }
-    return render_template('start.htm.j2', **tpl_kwargs)
+    return render_template('start.htm.j2', { 'email': email })
 
-
+# Install JSON
 @app.route('/config/<key_id>/json', methods=['GET'])
 def config_json(key_id):
     title = "Simple LTI 1.3"

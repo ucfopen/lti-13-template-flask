@@ -96,5 +96,3 @@ lticonfig.client_id = client_id
 
 db.session.add(lticonfig)
 db.session.commit()
-
-
