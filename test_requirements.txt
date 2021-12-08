@@ -1,0 +1,3 @@
+-f requirements.txt
+flake8
+black
