@@ -33,44 +33,43 @@ public_key = key.publickey().exportKey()
 print("Converting Keys to JWKS...")
 jwk_obj = JWK.from_pem(public_key)
 public_jwk = json.loads(jwk_obj.export_public())
-public_jwk['alg'] = 'RS256'
-public_jwk['use'] = 'sig'
+public_jwk["alg"] = "RS256"
+public_jwk["use"] = "sig"
 public_jwk_str = json.dumps(public_jwk)
 
-canvas_url = '''
+canvas_url = """
 What is your canvas url?
 1 - https://canvas.instructure.com/
 2 - https://canvas.test.instructure.com/
 3 - Other
-'''
+"""
 print(canvas_url)
 server_url = input()
 if server_url == "1":
-	server_url = "https://canvas.instructure.com"
+    server_url = "https://canvas.instructure.com"
 if server_url == "2":
-	server_url = "https://canvas.test.instructure.com"
+    server_url = "https://canvas.test.instructure.com"
 if server_url == "3":
-	print("Please type your server url: ")
-	server_url = input()
+    print("Please type your server url: ")
+    server_url = input()
 
 if ".test." in server_url:
-	issuer = "https://canvas.test.instructure.com"
+    issuer = "https://canvas.test.instructure.com"
 else:
-	issuer = "https://canvas.instructure.com"
+    issuer = "https://canvas.instructure.com"
 
 
 lticonfig = LTIConfig(
-    iss = issuer,
-    client_id = "CHANGEME",
+    iss=issuer,
+    client_id="CHANGEME",
     auth_login_url="%s/api/lti/authorize_redirect" % server_url,
     auth_token_url="%s/login/oauth2/token" % server_url,
     key_set_url="%s/api/lti/security/jwks" % server_url,
-    private_key_file = private_key.decode('utf-8'),
-    public_key_file = public_key.decode('utf-8'),
-    public_jwk = public_jwk_str,
-    deployment_id = "{CHANGEME:CHANGEME}"
+    private_key_file=private_key.decode("utf-8"),
+    public_key_file=public_key.decode("utf-8"),
+    public_jwk=public_jwk_str,
+    deployment_id="{CHANGEME:CHANGEME}",
 )
-
 
 
 db.session.add(lticonfig)
@@ -78,10 +77,10 @@ db.session.commit()
 
 print("JSON url: https://127.0.0.1:8000/lti13template/config/%s/json/" % lticonfig.id)
 
-message = '''
+message = """
 You will now need to install the tool into your LMS, and update the Deployment ID 
 and Client ID via your database manager of choice, or from here:
-'''
+"""
 
 print(message)
 

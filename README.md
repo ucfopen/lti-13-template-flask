@@ -5,6 +5,8 @@ Boilerplate LTI 1.3 template written in Python using the Flask framework.
 
 This is our starter Flask Template for using LTI 1.3.  This skeleton will launch an LTI 1.3 application from within your LMS and display the email of the logged in user.  
 
+We are always looking for feedback and pull requests.   
+
 # Installation
 
 ## Docker
@@ -47,12 +49,13 @@ This script will output directions to follow to generate the Client ID and Deplo
 
 The LTI 1.3 Template will now be running at: <http://127.0.0.1:8000/lti13template/> and available via the course navigation from the account or course you installed the tool into.
 
-==========================================================
 
 Special Thanks to:
+==========================================================
 
 [Dmitry Viskov](https://github.com/dmitry-viskov/) for the [pylti1p3](https://github.com/dmitry-viskov/pylti1.3/) python library.
-[Instructure](https://github.com/instructure/) for their LMS: [Canvas](https://github.com/instructure/canvas-lms)
-and [IMS Global](https://imsglobal.org) for defining the LTI standards.
 
+[Instructure](https://github.com/instructure/) for their LMS: [Canvas](https://github.com/instructure/canvas-lms)
+
+[IMS Global](https://imsglobal.org) for defining the LTI standards.
 
