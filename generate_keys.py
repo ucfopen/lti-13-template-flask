@@ -2,10 +2,8 @@ import json
 
 from Crypto.PublicKey import RSA
 from jwcrypto.jwk import JWK
-from flask import url_for, redirect
 
-from main import config_json
-from main import db, app
+from main import db
 from main import LTIConfig
 
 # LTIConfig Reference
@@ -78,7 +76,7 @@ db.session.commit()
 print("JSON url: https://127.0.0.1:8000/lti13template/config/%s/json/" % lticonfig.id)
 
 message = """
-You will now need to install the tool into your LMS, and update the Deployment ID 
+You will now need to install the tool into your LMS, and update the Deployment ID
 and Client ID via your database manager of choice, or from here:
 """
 

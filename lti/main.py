@@ -1,25 +1,17 @@
-import boto3
-import os
-import hashlib
-import urllib.parse
 import json
 
-from datetime import datetime
-from flask import Flask, request, render_template, session, url_for, redirect, jsonify
+from flask import Flask, request, render_template, session, url_for, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_caching import Cache
 from flask_migrate import Migrate
-from werkzeug.utils import secure_filename
 from pylti1p3.contrib.flask import (
     FlaskOIDCLogin,
     FlaskMessageLaunch,
     FlaskRequest,
     FlaskCacheDataStorage,
 )
-from pylti1p3.deep_link_resource import DeepLinkResource
 from pylti1p3.exception import LtiException
 from pylti1p3.tool_config import ToolConfDict
-from pylti1p3.registration import Registration
 
 
 class ReverseProxied(object):
