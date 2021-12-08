@@ -153,7 +153,10 @@ def login():
     oidc_login = FlaskOIDCLogin(
         flask_request, tool_conf, launch_data_storage=launch_data_storage
     )
-    return oidc_login.enable_check_cookies().redirect(target_link_uri)
+    return oidc_login.enable_check_cookies(
+        main_msg="Your browser prohibits saving cookies in an iframe.",
+        click_msg="Click here to open the application in a new tab.",
+    ).redirect(target_link_uri)
 
 
 # Main Launch URL
