@@ -3,8 +3,7 @@ import json
 from Crypto.PublicKey import RSA
 from jwcrypto.jwk import JWK
 
-from main import db
-from main import LTIConfig
+from main import app, db, LTIConfig
 
 # LTIConfig Reference
 # class LTIConfig(db.Model):
@@ -17,6 +16,9 @@ from main import LTIConfig
 #     private_key_file = db.Column(db.Text)
 #     public_key_file = db.Column(db.Text)
 #     deployment_id = db.Column(db.Text)
+
+# Create app context so database doesn't complain about it
+app.app_context().push()
 
 print("Creating Database if it doesn't exist...")
 db.create_all()
