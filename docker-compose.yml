@@ -8,11 +8,21 @@ services:
         - "REQUIREMENTS=${REQUIREMENTS}"
     volumes:
       - ./lti:/app
-      - $PWD/devops/nginx.conf:/app/nginx.conf
-      - $PWD/devops/uwsgi.ini:/app/uwsgi.ini
-      - $PWD/generate_keys.py:/app/generate_keys.py
-      - $PWD/setup.cfg:/app/setup.cfg
-      - $PWD/pyproject.toml:/app/pyproject.toml
+      - type: bind
+        source: ./devops/nginx.conf
+        target: /app/nginx.conf
+      - type: bind
+        source: ./devops/uwsgi.ini
+        target: /app/uwsgi.ini
+      - type: bind
+        source: ./generate_keys.py
+        target: /app/generate_keys.py
+      - type: bind
+        source: ./setup.cfg
+        target: /app/setup.cfg
+      - type: bind
+        source: ./pyproject.toml
+        target: /app/pyproject.toml
     ports:
       - "8000:80"
     env_file:

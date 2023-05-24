@@ -23,20 +23,20 @@ In this simple framework all the variables are preset, but for production you wi
 We use Docker-Compose to build and run our services.
 
 ```sh
-docker-compose build
-docker-compose up -d
+docker compose build
+docker compose up -d
 ```
 
 After Docker builds and starts the services, you will run the migration commands to create the database.
 
 ```sh
-docker-compose exec lti flask db upgrade 
+docker compose exec lti flask db upgrade 
 ```
 
 The database which will hold your LTI1.3 credentials has now been created.  It's now time to generate the LTI 1.3 keys for LMS authentication:
 
 ```sh
-docker-compose run lti python generate_keys.py 
+docker compose run lti python generate_keys.py 
 ```
 
 This script will output directions to follow to generate the Client ID and Deployment ID.  You can find further documentation here: <https://github.com/dmitry-viskov/pylti1.3/wiki/Configure-Canvas-as-LTI-1.3-Platform>
